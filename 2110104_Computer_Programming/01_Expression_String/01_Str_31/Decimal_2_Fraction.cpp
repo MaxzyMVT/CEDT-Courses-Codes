@@ -13,17 +13,17 @@ long gcd(long a, long b)
 
 int main()
 {
-    string integerPart, fractionPart, repeatingPart;
+    string integerPart, decimalPart, repeatingPart;
     long long X, Xp, numerator, denominator, GCD;
 
-    cin >> integerPart >> fractionPart >> repeatingPart;
+    cin >> integerPart >> decimalPart >> repeatingPart;
 
     int shift = pow(10, repeatingPart.size());
 
-    X = stoll(integerPart + fractionPart + repeatingPart);
+    X = stoll(integerPart + decimalPart + repeatingPart);
     Xp = X * shift;
 
-    denominator = (shift - 1) * pow(10, fractionPart.size());
+    denominator = (shift - 1) * pow(10, decimalPart.size());
     numerator = (Xp - X + stoll(repeatingPart)) / shift;
 
     GCD = gcd(numerator, denominator);
