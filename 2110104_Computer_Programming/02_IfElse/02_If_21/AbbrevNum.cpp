@@ -5,7 +5,7 @@ using namespace std;
 int main() {
 
     unsigned long long sub;
-    double display;
+    double display, ;
     cin >> sub;
 
     if(sub < 1000)
