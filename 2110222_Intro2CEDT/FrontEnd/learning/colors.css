@@ -1,0 +1,30 @@
+/* colors.css */
+
+.color-1 {
+    background-color: #AEC6CF;
+}
+
+.color-2 {
+    background-color: #B2D8B2;
+}
+
+.color-3 {
+    background-color: #FFB6C1;
+}
+
+table {
+    font-family: sans-serif;
+    border-collapse: collapse;
+    width: 50%;
+    margin: 20px auto;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #F2F2F2;
+}
