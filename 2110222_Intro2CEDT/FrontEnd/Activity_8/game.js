@@ -4,7 +4,6 @@ class RoomUtil {
   static ROOMSIZE = { w: 800, h: 600 };
   static isReady = false;
 
-  // It might be useful for the "players" object to be used for storing all the players in the room. The key could be the player's number and the value could be the Player object.
   static players = {};
 
   static getSecret() {
@@ -26,7 +25,7 @@ class RoomUtil {
     })
       .then((response) => response.json())
       .then((data) => {
-        // Let RoomUtil.initAllPlayers() handle the initialization of the players based on data.
+        
         RoomUtil.initAllPlayers(scene, data, myPlayer);
 
         // For Part 3:
@@ -77,10 +76,7 @@ static fetchAllPlayersXY(scene) {
         // Once the position data is fetched, update the local Player objects.
         Object.keys(data).forEach((key) => {
           
-          // *** THE FIX IS HERE ***
-          // We must not update our own player with data from the server,
-          // because our local input is the authority. We only update OTHER players.
-          if (key === `p${RoomUtil.getPlayerNumber()}`) {
+          if (key === RoomUtil.getPlayerNumber()) {
             return; // This skips the rest of the code for this iteration of the loop.
           }
 
@@ -100,7 +96,6 @@ static fetchAllPlayersXY(scene) {
 }
 
 class Player {
-  // Represents a player in the game
   constructor(playerNumber) {
     this.playerNumber = playerNumber;
     this.look = null; // The look of the player. This is an object with shape and color properties
@@ -156,7 +151,7 @@ class Player {
 
   // Call this method every frame to smoothly update the player's position
   updatePlayerInRoom() {
-    // If this player doesn't have a visual representation, we can't do anything.
+
     if (!this.visual) {
       return;
     }
@@ -167,28 +162,22 @@ class Player {
       return;
     }
 
-    const speed = 2; // You can adjust this value for faster or slower movement.
-
-    // Calculate the distance between the player's current position and its target.
+    const speed = 2;
     const distance = Phaser.Math.Distance.Between(this.posX, this.posY, this.targetX, this.targetY);
 
-    // If the player is very close to the target, snap it to the exact destination
-    // and clear the target so it stops moving.
     if (distance < speed) {
+      // If the player is close enough to the target, snap to the target position.
       this.posX = this.targetX;
       this.posY = this.targetY;
       
-      // Clear the target so the movement stops.
-      // Important: Don't do this for other players, only for myPlayer,
-      // as other players' targets are controlled by the server.
       if (this instanceof MyPlayer) {
           this.targetX = undefined;
           this.targetY = undefined;
       }
 
-    } else {
-      // If the player is still far from the target, calculate the angle and move it.
-      // The key is using 'this' to get the properties of the CURRENT player instance.
+    } else { // If target is still far
+      
+      // Calculate the angle towards the target.
       const angle = Phaser.Math.Angle.Between(this.posX, this.posY, this.targetX, this.targetY);
 
       // Update the player's internal position data.
@@ -210,13 +199,11 @@ class MyPlayer extends Player {
 
   setTarget(x, y) {
     super.setTarget(x, y);
-    // When the user clicks to set a new target, immediately update the server.
     this.updateMyselfToServer();
   }
 
   updateMyselfToServer() {
     // Part 2: Send the new position and target to the server via a POST request.
-    // The request body must be formatted as 'application/x-www-form-urlencoded'.
     const requestBody = new URLSearchParams({
       pos_x: this.posX,
       pos_y: this.posY,
@@ -254,7 +241,6 @@ class MyPlayer extends Player {
 
 // --- Phaser Game Setup ---
 let game, myPlayer;
-// Use a scene-level variable for the timer instead of a global one.
 let fetchInterval = 5000; // Fetch data every 5 seconds
 
 const secret = RoomUtil.getSecret();
