@@ -10,12 +10,12 @@ int main()
     // 2 Ways to declare / open a file
     ifstream inputFile("in.txt");
     ofstream outputFile;
-    outputFile.open("out.txt");
+    outputFile.open("out.txt"); // use ("output.txt", std::ios::app) to append file instead of rewrite the file
 
     // Check if files are opened successfully
     if (!inputFile.is_open() || !outputFile.is_open())
     {
-        cerr << "Error opening file." << endl;
+        cout << "Error opening file." << endl;
         return 1;
     }
 
