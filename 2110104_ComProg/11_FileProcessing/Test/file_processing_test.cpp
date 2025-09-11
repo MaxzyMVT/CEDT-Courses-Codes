@@ -9,8 +9,8 @@ int main()
 {
     // 2 Ways to declare / open a file
     ifstream inputFile("in.txt");
-    ofstream outputFile;
-    outputFile.open("out.txt"); // use ("output.txt", std::ios::app) to append file instead of rewrite the file
+    fstream outputFile;
+    outputFile.open("./out.txt"); // use ("output.txt", std::ios::app) to append file instead of rewrite the file
 
     // Check if files are opened successfully
     if (!inputFile.is_open() || !outputFile.is_open())
@@ -34,10 +34,6 @@ int main()
     {
         outputFile << x << " ";
     }
-
-    // Close the files
-    inputFile.close();
-    outputFile.close();
 
     return 0;
 }
