@@ -126,7 +126,7 @@ int main()
         int g1 = stoi(in.substr(pos1 + 1));
         int g2 = stoi(in2.substr(pos2 + 1));
 
-        // Change to head airport names
+        // Change to head airport names and gates
         auto [AP1, gate1] = findHead(name1, g1, Head, HeadShift);
         auto [AP2, gate2] = findHead(name2, g2, Head, HeadShift);
 
