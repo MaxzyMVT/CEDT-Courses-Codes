@@ -25,11 +25,11 @@ int checkGate(int gate, string &Gates)
     return n;
 }
 
-pair<string, int> findHead(string AP, int relativeIDX, map<string, string> &Head, map<string, int> &HeadShift, map<string, string> &Gates)
+pair<string, int> findHead(string AP, int relativeIDX, map<string, string> &Head, map<string, int> &HeadShift)
 {
     if (Head[AP] == AP)
         return {AP, relativeIDX};
-    auto [headAP, headIDX] = findHead(Head[AP], HeadShift[AP], Head, HeadShift, Gates);
+    auto [headAP, headIDX] = findHead(Head[AP], HeadShift[AP], Head, HeadShift);
     Head[AP] = headAP;
     HeadShift[AP] = headIDX;
     return {headAP, headIDX + relativeIDX};
@@ -37,8 +37,8 @@ pair<string, int> findHead(string AP, int relativeIDX, map<string, string> &Head
 
 void mergeAP(string AP1, string AP2, map<string, string> &Head, map<string, int> &HeadShift, map<string, string> &Gates)
 {
-    auto [u, idxU] = findHead(AP1, 0, Head, HeadShift, Gates);
-    auto [v, idxV] = findHead(AP2, 0, Head, HeadShift, Gates);
+    auto [u, idxU] = findHead(AP1, 0, Head, HeadShift);
+    auto [v, idxV] = findHead(AP2, 0, Head, HeadShift);
     Head[v] = u;
     HeadShift[v] = Gates[u].size();
     Gates[u] += Gates[v];
@@ -127,8 +127,8 @@ int main()
         int g2 = stoi(in2.substr(pos2 + 1));
 
         // Change to head airport names
-        auto [AP1, gate1] = findHead(name1, g1, Head, HeadShift, Gates);
-        auto [AP2, gate2] = findHead(name2, g2, Head, HeadShift, Gates);
+        auto [AP1, gate1] = findHead(name1, g1, Head, HeadShift);
+        auto [AP2, gate2] = findHead(name2, g2, Head, HeadShift);
 
         Gates[AP1][gate1] = '0';
 
