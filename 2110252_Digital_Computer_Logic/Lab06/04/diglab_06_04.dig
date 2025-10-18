@@ -51,19 +51,19 @@
       <elementName>Rectangle</elementName>
       <elementAttributes>
         <entry>
+          <string>RectHeight</string>
+          <int>35</int>
+        </entry>
+        <entry>
           <string>Label</string>
           <string>D Flip-flop</string>
         </entry>
         <entry>
-          <string>RectHeight</string>
-          <int>17</int>
-        </entry>
-        <entry>
           <string>RectWidth</string>
-          <int>22</int>
+          <int>54</int>
         </entry>
       </elementAttributes>
-      <pos x="220" y="-1260"/>
+      <pos x="-420" y="-1360"/>
     </visualElement>
     <visualElement>
       <elementName>NOr</elementName>
