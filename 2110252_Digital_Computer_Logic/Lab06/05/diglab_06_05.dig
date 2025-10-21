@@ -42,18 +42,18 @@
       <elementAttributes>
         <entry>
           <string>RectHeight</string>
-          <int>17</int>
+          <int>34</int>
         </entry>
         <entry>
           <string>Label</string>
-          <string>D Flip-flop</string>
+          <string>T Flip-flop</string>
         </entry>
         <entry>
           <string>RectWidth</string>
-          <int>22</int>
+          <int>67</int>
         </entry>
       </elementAttributes>
-      <pos x="500" y="-300"/>
+      <pos x="-380" y="-420"/>
     </visualElement>
     <visualElement>
       <elementName>NOr</elementName>
