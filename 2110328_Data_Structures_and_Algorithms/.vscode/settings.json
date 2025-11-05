@@ -48,6 +48,8 @@
 		"algorithm": "cpp",
 		"map": "cpp",
 		"numeric": "cpp",
-		"string": "cpp"
+		"string": "cpp",
+		"deque": "cpp",
+		"stack": "cpp"
 	}
 }
