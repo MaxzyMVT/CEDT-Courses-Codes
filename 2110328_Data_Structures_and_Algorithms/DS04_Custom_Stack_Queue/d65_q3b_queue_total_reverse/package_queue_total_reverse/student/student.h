@@ -3,20 +3,18 @@
 #include "queue.h"
 #include <stack>
 
-bool mReversed = false;
-
 template <typename T>
 void CP::queue<T>::reverse()
 {
   // Your code here
-  mReversed = !mReversed;
+  aux = !aux;
 }
 
 template <typename T>
 const T &CP::queue<T>::front() const
 {
   // You MAY need to edit this function
-  if (mReversed)
+  if (aux)
     return mData[(mFront + mSize - 1) % mCap];
   return mData[mFront];
 }
@@ -25,7 +23,7 @@ template <typename T>
 const T &CP::queue<T>::back() const
 {
   // You MAY need to edit this function
-  if (mReversed)
+  if (aux)
     return mData[mFront];
   return mData[(mFront + mSize - 1) % mCap];
 }
@@ -35,7 +33,7 @@ void CP::queue<T>::push(const T &element)
 {
   // You MAY need to edit this function
   ensureCapacity(mSize + 1);
-  if (mReversed)
+  if (aux)
   {
     mFront = (mFront - 1 + mCap) % mCap;
     mData[mFront] = element;
@@ -49,7 +47,7 @@ template <typename T>
 void CP::queue<T>::pop()
 {
   // You MAY need to edit this function
-  if (!mReversed)
+  if (!aux)
     mFront = (mFront + 1) % mCap;
   mSize--;
 }
