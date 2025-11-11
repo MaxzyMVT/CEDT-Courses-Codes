@@ -25,7 +25,6 @@ CP::map_bst<KeyT, MappedT, CompareT> CP::map_bst<KeyT, MappedT, CompareT>::split
   {
     if (mLess(now->data.first, val)) // Compare Lesser
     {
-      node *prev = *LT;
       *LT = now;
       LT = &(now->right);
       now = now->right;
