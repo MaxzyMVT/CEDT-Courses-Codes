@@ -10,35 +10,26 @@ int main()
     int n, m, a;
     cin >> n >> m;
 
-    vector<int> V;
+    vector<int> V(1, -1);
     while (n--)
         cin >> a, V.push_back(a);
 
     while (m--)
     {
         cin >> a;
-        int l = 0, r = V.size();
-        int mid = (l + r) / 2;
+        int l = 0, r = V.size() - 1;
+        int mid = (l + r + 1) / 2;
         while (l < r)
         {
             if (V[mid] == a)
                 break;
             if (V[mid] > a)
-                r = mid;
+                r = mid - 1;
             else
-                l = mid + 1;
-            mid = (l + r) / 2;
+                l = mid;
+            mid = (l + r + 1) / 2;
         }
-
-        if (V[mid] > a)
-            if (mid - 1 < 0)
-                cout << "-1\n";
-            else
-                cout << V[mid - 1] << "\n";
-        else if (mid >= V.size())
-            cout << V.back();
-        else
-            cout << V[mid] << "\n";
+        cout << V[mid] << "\n";
     }
 
     return 0;
