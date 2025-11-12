@@ -40,19 +40,21 @@ CP::map_bst<KeyT, MappedT, CompareT> CP::map_bst<KeyT, MappedT, CompareT>::split
   *GTE = NULL;
   *LT = NULL;
 
-  // Recur func to assign new parents
-  std::function<void(node *, node *)> fix_parent;
-  fix_parent = [&fix_parent](node *n, node *parent) -> void
+  // Recur func to assign new parents (try only one side)
+  std::function<void(node *, node *, bool)> fix_parent;
+  fix_parent = [&fix_parent](node *n, node *parent, bool fixLeft) -> void
   {
     if (n == NULL)
       return;
     n->parent = parent;
-    fix_parent(n->left, n);
-    fix_parent(n->right, n);
+    if (fixLeft)
+      fix_parent(n->left, n, true);
+    else
+      fix_parent(n->right, n, false);
   };
 
-  fix_parent(mRoot, NULL);
-  fix_parent(result.mRoot, NULL);
+  fix_parent(mRoot, NULL, false);
+  fix_parent(result.mRoot, NULL, true);
 
   return result;
 }
