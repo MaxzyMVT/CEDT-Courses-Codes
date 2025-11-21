@@ -21,49 +21,31 @@ void CP::list<T>::zigzag(CP::list<T> &ls)
     auto headB = ls.end();
     node *now = mHeader;
 
-    while (itA != headA && itB != headB)
+    while (itA != headA || itB != headB)
     {
-        node *A = itA.ptr, *B = itB.ptr;
-        ++itA;
-        ++itB;
+        if (itA != headA)
+        {
+            node *A = itA.ptr;
+            ++itA;
 
-        now->next = A;
-        A->prev = now;
-        now = now->next;
+            now->next = A;
+            A->prev = now;
+            now = now->next;
+        }
 
-        now->next = B;
-        B->prev = now;
-        now = now->next;
+        if (itB != headB)
+        {
+            node *B = itB.ptr;
+            ++itB;
 
-        now->next = mHeader;
-        mHeader->prev = now;
+            now->next = B;
+            B->prev = now;
+            now = now->next;
+        }
     }
 
-    while (itA != headA)
-    {
-        node *A = itA.ptr;
-        ++itA;
-
-        now->next = A;
-        A->prev = now;
-        now = now->next;
-
-        now->next = mHeader;
-        mHeader->prev = now;
-    }
-
-    while (itB != headB)
-    {
-        node *B = itB.ptr;
-        ++itB;
-
-        now->next = B;
-        B->prev = now;
-        now = now->next;
-
-        now->next = mHeader;
-        mHeader->prev = now;
-    }
+    now->next = mHeader;
+    mHeader->prev = now;
 
     mSize += ls.size();
 
