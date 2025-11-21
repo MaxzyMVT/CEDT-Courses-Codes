@@ -8,7 +8,6 @@ CP::map_bst<KeyT, MappedT, CompareT> CP::map_bst<KeyT, MappedT, CompareT>::split
 {
   // your code here
   CP::map_bst<KeyT, MappedT, CompareT> result;
-  result.mLess = mLess;
 
   if (mSize == 0)
     return result;
