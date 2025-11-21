@@ -1,8 +1,6 @@
 #ifndef __STUDENT_H_
 #define __STUDENT_H_
 
-#include <functional>
-
 template <typename KeyT,
           typename MappedT,
           typename CompareT>
