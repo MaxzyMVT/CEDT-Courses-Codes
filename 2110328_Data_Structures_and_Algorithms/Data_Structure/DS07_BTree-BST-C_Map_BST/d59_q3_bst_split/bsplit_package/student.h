@@ -20,6 +20,8 @@ CP::map_bst<KeyT, MappedT, CompareT> CP::map_bst<KeyT, MappedT, CompareT>::split
 
   node **LT = &mRoot;         // where to add to Lesser Subtree
   node **GTE = &result.mRoot; // where to add to Greater or Equal Subtree
+  node *parentLT = NULL;
+  node *parentGTE = NULL;
 
   while (now != NULL)
   {
@@ -27,34 +29,24 @@ CP::map_bst<KeyT, MappedT, CompareT> CP::map_bst<KeyT, MappedT, CompareT>::split
     {
       *LT = now;
       LT = &(now->right);
+      now->parent = parentLT;
+
+      parentLT = now;
       now = now->right;
     }
     else // Compare Greater or Equal
     {
       *GTE = now;
       GTE = &(now->left);
+      now->parent = parentGTE;
+
+      parentGTE = now;
       now = now->left;
     }
   }
 
   *GTE = NULL;
   *LT = NULL;
-
-  // Recur func to assign new parents (try only one side)
-  std::function<void(node *, node *, bool)> fix_parent;
-  fix_parent = [&fix_parent](node *n, node *parent, bool fixLeft) -> void
-  {
-    if (n == NULL)
-      return;
-    n->parent = parent;
-    if (fixLeft)
-      fix_parent(n->left, n, true);
-    else
-      fix_parent(n->right, n, false);
-  };
-
-  fix_parent(mRoot, NULL, false);
-  fix_parent(result.mRoot, NULL, true);
 
   return result;
 }
