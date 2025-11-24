@@ -11,6 +11,7 @@ int main()
     cin >> n >> m;
 
     vector<int> V(1, -1);
+    V.reserve(n + 1);
     while (n--)
         cin >> a, V.push_back(a);
 
