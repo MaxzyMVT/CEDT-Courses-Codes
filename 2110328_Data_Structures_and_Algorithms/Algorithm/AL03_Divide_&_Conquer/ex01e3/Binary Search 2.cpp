@@ -19,16 +19,16 @@ int main()
     {
         cin >> a;
         int l = 0, r = V.size() - 1;
-        int mid = (l + r + 1) / 2;
-        while (l < r)
+        int mid = (l + r) / 2;
+        while (l <= r)
         {
             if (V[mid] == a)
                 break;
             if (V[mid] > a)
                 r = mid - 1;
             else
-                l = mid;
-            mid = (l + r + 1) / 2;
+                l = mid + 1;
+            mid = (l + r) / 2;
         }
         cout << V[mid] << "\n";
     }
