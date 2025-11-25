@@ -8,7 +8,7 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int _00 = 0, _01 = 0, _10 = 0, n;
+    int _00 = 0, _X1 = 0, n;
     cin >> n;
 
     int ans = 1;
@@ -16,9 +16,8 @@ int main()
     while (n--)
     {
         _00 = ans;
-        _01 = (ans + (MOD - _10)) % MOD;
-        _10 = _01; // since _10 always equal to _01
-        ans = (((_00 + _01) % MOD) + _10) % MOD;
+        _X1 = (ans + (MOD - _X1)) % MOD;
+        ans = (((_00 + _X1) % MOD) + _X1) % MOD;
     }
 
     cout << ans;
