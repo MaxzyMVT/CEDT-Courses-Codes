@@ -5,16 +5,17 @@ using namespace std;
 
 int findHead(int u, vector<int> &heads)
 {
-    if (heads[u] == u)
+    if (heads[u] == -1)
         return u;
     return heads[u] = findHead(heads[u], heads);
 }
 
-void connec(int u, int v, vector<int> &heads)
+bool connec(int u, int v, vector<int> &heads)
 {
     int uH = findHead(u, heads);
     int vH = findHead(v, heads);
     heads[vH] = uH;
+    return uH == vH;
 }
 
 int main()
@@ -30,8 +31,7 @@ int main()
         int n, e;
         cin >> n >> e;
 
-        vector<int> heads(n);
-        iota(heads.begin(), heads.end(), 0);
+        vector<int> heads(n, -1);
 
         bool hasCycle = false;
         while (e--)
@@ -42,10 +42,7 @@ int main()
             if (hasCycle)
                 continue;
 
-            if (findHead(a, heads) == findHead(b, heads))
-                hasCycle = true;
-            else
-                connec(a, b, heads);
+            hasCycle = connec(a, b, heads);
         }
 
         cout << (hasCycle ? "YES\n" : "NO\n");
