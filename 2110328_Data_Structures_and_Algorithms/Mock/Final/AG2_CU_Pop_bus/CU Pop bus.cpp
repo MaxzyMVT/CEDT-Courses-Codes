@@ -39,7 +39,7 @@ int main()
         auto [r, c, w] = Q.front();
         Q.pop();
 
-        if (r < 0 || c < 0 || r >= n || c >= m || V[r][c] == 'O' || V[r][c] == 'X')
+        if (r < 0 || c < 0 || r >= n || c >= m || V[r][c] == 'X')
             continue;
 
         if (r == n - 1 && c == m - 1)
@@ -65,7 +65,7 @@ int main()
             Q.push({r + 1, c, w + 1});
         }
 
-        V[r][c] = 'O';
+        V[r][c] = 'X';
     }
 
     return 0;
