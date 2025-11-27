@@ -58,7 +58,7 @@ int main()
     for (int i = 1; i <= k; i++)
         cin >> shrine[i];
 
-    priority_queue<Walk> pq;
+    priority_queue<Walk, vector<Walk>, greater<Walk>> pq;
     vector<bool> mark(n + 1);
 
     pq.push({0, Final});
