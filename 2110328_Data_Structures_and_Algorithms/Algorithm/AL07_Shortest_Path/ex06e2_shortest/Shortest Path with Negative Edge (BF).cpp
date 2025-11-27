@@ -46,7 +46,7 @@ int main()
         }
     }
 
-    // neg cycle detection (change dist at last iteration when all dist in 0 from start)
+    // neg cycle detection (change dist at last iteration when all dist is 0 from start)
     if (hasNegCycle)
     {
         cout << -1;
