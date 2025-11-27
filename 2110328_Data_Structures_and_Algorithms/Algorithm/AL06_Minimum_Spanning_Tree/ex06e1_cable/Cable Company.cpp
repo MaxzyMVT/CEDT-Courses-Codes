@@ -44,7 +44,10 @@ int main()
         sum += w;
 
         for (auto e : G[u])
-            pq.push(e);
+        {
+            if (!mark[e.second])
+                pq.push(e);
+        }
     }
 
     cout << sum;
