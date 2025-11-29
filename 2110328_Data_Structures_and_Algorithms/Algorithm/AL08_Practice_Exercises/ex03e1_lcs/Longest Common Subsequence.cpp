@@ -14,7 +14,7 @@ int main()
     in1 = " " + in1;
     in2 = " " + in2;
 
-    vector<vector<int>> V(in1.size() + 1, vector<int>(in2.size() + 1));
+    vector<vector<int>> V(in1.size(), vector<int>(in2.size()));
 
     for (int i = 1; i < in1.size(); i++)
     {
@@ -27,7 +27,7 @@ int main()
         }
     }
 
-    cout << V[in1.size() - 1][in2.size() - 1];
+    cout << V.back().back();
 
     return 0;
 }
