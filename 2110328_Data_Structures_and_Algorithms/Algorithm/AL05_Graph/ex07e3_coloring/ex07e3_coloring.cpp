@@ -48,7 +48,6 @@ int main()
 
     for (int num = 1; num <= n; num++)
     {
-        vector<bool> valid(n, true);
         vector<int> color(n);
 
         if (canColor(n - 1, G, num, color))
