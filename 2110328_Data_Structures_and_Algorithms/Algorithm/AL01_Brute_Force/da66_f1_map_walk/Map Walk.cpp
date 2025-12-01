@@ -14,13 +14,13 @@ void walk(int r, int c, vector<vector<bool>> &V, string &path)
 
     V[r][c] = true;
 
-    path += "A";
+    path.push_back('A');
     walk(r, c + 1, V, path);
 
-    path[path.size() - 1] = 'B';
+    path.back() = 'B';
     walk(r + 1, c, V, path);
 
-    path[path.size() - 1] = 'C';
+    path.back() = 'C';
     walk(r - 1, c, V, path);
 
     V[r][c] = false;
