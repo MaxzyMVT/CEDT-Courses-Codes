@@ -1,24 +1,25 @@
 #include <iostream>
 #include <vector>
+#include <string>
 using namespace std;
 
-void perm(int pos, string &ans, vector<int> &alpha_cnt, vector<int> &alpha_lim, vector<string> &V)
+void gen_ABC_permutation(int pos, string &ans, vector<int> &cnt, vector<int> &limit, vector<string> &permutations)
 {
-    if (pos == ans.size())
+    if (pos >= ans.size())
     {
-        V.push_back(ans);
+        permutations.push_back(ans);
         return;
     }
 
-    string T = "ABC";
+    string alpha = "ABC";
     for (int i = 0; i < 3; i++)
     {
-        if (alpha_cnt[i] < alpha_lim[i])
+        if (cnt[i] < limit[i])
         {
-            alpha_cnt[i]++;
-            ans[pos] = T[i];
-            perm(pos + 1, ans, alpha_cnt, alpha_lim, V);
-            alpha_cnt[i]--;
+            cnt[i]++;
+            ans[pos] = alpha[i];
+            gen_ABC_permutation(pos + 1, ans, cnt, limit, permutations);
+            cnt[i]--;
         }
     }
 }
@@ -28,20 +29,20 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    vector<int> alpha_cnt(3);
-    vector<int> alpha_lim(3);
-    int n, A, B, C;
+    int n;
+    cin >> n;
 
-    cin >> n >> alpha_lim[0] >> alpha_lim[1] >> alpha_lim[2];
+    vector<int> limit(3), cnt(3);
+    vector<string> perms;
 
-    string ans(n, ' ');
-    vector<string> V;
+    cin >> limit[0] >> limit[1] >> limit[2];
 
-    perm(0, ans, alpha_cnt, alpha_lim, V);
+    string ans(n, 'A');
+    gen_ABC_permutation(0, ans, cnt, limit, perms);
 
-    cout << V.size() << "\n";
-    for (string s : V)
-        cout << s << "\n";
+    cout << perms.size() << "\n";
+    for (string ans : perms)
+        cout << ans << "\n";
 
     return 0;
 }

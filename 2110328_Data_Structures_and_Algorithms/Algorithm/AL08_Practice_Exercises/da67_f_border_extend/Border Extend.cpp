@@ -4,9 +4,6 @@
 #include <queue>
 using namespace std;
 
-#define edge tuple<int, int, int>
-#define process(r, c, w) (G[r][c] = 2, Q.push({w, r, c}))
-
 int main()
 {
     ios_base::sync_with_stdio(false);
@@ -15,51 +12,52 @@ int main()
     int n, m, k;
     cin >> n >> m >> k;
 
-    vector<vector<int>> G(n, vector<int>(m));
-    queue<edge> Q;
+    vector<vector<int>> V(n, vector<int>(m));
+    queue<tuple<int, int, int>> Q;
+    int dir[] = {-1, 0, 1, 0, -1};
 
-    for (int r = 0; r < n; r++)
-        for (int c = 0; c < m; c++)
-            cin >> G[r][c];
-
-    if (k > 0)
-        for (int r = 0; r < n; r++)
-            for (int c = 0; c < m; c++)
-            {
-                if (G[r][c] == 1)
-                {
-                    if (r + 1 < n && G[r + 1][c] == 0)
-                        process(r + 1, c, k - 1);
-                    if (r - 1 >= 0 && G[r - 1][c] == 0)
-                        process(r - 1, c, k - 1);
-                    if (c + 1 < m && G[r][c + 1] == 0)
-                        process(r, c + 1, k - 1);
-                    if (c - 1 >= 0 && G[r][c - 1] == 0)
-                        process(r, c - 1, k - 1);
-                }
-            }
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            cin >> V[i][j];
+            if (V[i][j] == 1)
+                Q.push({i, j, k});
+        }
+    }
 
     while (Q.size())
     {
-        auto [w, r, c] = Q.front();
+        auto [r, c, w] = Q.front();
         Q.pop();
 
-        if (w <= 0 || r < 0 || c < 0 || r >= n || c >= m)
+        if (r < 0 || c < 0 || r >= n || c >= m || w <= 0)
             continue;
 
-        if (r + 1 < n && G[r + 1][c] == 0)
-            process(r + 1, c, w - 1);
-        if (r - 1 >= 0 && G[r - 1][c] == 0)
-            process(r - 1, c, w - 1);
-        if (c + 1 < m && G[r][c + 1] == 0)
-            process(r, c + 1, w - 1);
-        if (c - 1 >= 0 && G[r][c - 1] == 0)
-            process(r, c - 1, w - 1);
+        for (int p = 0; p < 4; p++)
+        {
+            int x = r + dir[p];
+            int y = c + dir[p + 1];
+            if (x < 0 || y < 0 || x >= n || y >= m)
+                continue;
+
+            if (V[x][y] == 0)
+            {
+                V[x][y] = 2;
+                if (w - 1 > 0)
+                    Q.push({x, y, w - 1});
+            }
+        }
     }
 
-    for (int r = 0; r < n; r++, cout << "\n")
-        for (int c = 0; c < m; c++)
-            cout << G[r][c] << " ";
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            cout << V[i][j] << " ";
+        }
+        cout << "\n";
+    }
 
     return 0;
 }
