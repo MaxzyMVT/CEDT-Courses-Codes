@@ -1,6 +1,6 @@
 # CEDT-Courses-Codes
 
-Store all Code files in the CEDT Courses
+Store all personal code files in the CEDT Courses
 </br>
 </br>
 ### Computer Engineering and Digital Technology (CEDT)
