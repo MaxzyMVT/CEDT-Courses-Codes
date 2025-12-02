@@ -12,15 +12,14 @@ void permute(int pos, string &ans, map<char, int> &alpha, set<string> &perms)
         return;
     }
 
-    for (auto it = alpha.begin(); it != alpha.end(); it++)
+    for (auto &[c, cnt] : alpha)
     {
-        auto [c, cnt] = *it;
         if (cnt <= 0)
             continue;
-        it->second--;
+        cnt--;
         ans[pos] = c;
         permute(pos + 1, ans, alpha, perms);
-        it->second++;
+        cnt++;
     }
 }
 
