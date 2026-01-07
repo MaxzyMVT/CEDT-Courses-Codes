@@ -1,3 +1,5 @@
+package Test01;
+
 public class CommandLineArgument {
 
     private static int ans;
@@ -24,6 +26,5 @@ public class CommandLineArgument {
         }
 
         System.out.println("The Answer is: " + ans);
-        asdasd
     }
 }
