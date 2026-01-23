@@ -1,15 +1,13 @@
-package util;
+package game.util;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import board.Board;
 import game.board.Board;
 import game.piece.Bishop;
 import game.piece.Knight;
 import game.piece.Piece;
 import game.position.Position;
-import position.Position;
 
 public class Movement {
 
@@ -20,9 +18,6 @@ public class Movement {
 	public Movement(Position current, Board board) {
 		setCurrent(current);
 		setBoard(board);
-	}
-
-	public Movement(position.Position position, Board board) {
 	}
 
 	public void diagonalMove() { // x sign movement
@@ -90,13 +85,15 @@ public class Movement {
 
 	public void getMovePositions(Piece p) {
 		// TODO: move according to the actual piece.
-
-		
-
-
-
-
-
+		switch (p) {
+			case Knight _ -> {
+				lShapeMove();
+			}
+			case Bishop _ -> {
+				diagonalMove();
+			}
+			default -> {}
+		}
 	}
 
 }

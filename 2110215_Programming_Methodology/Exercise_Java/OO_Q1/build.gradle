@@ -4,7 +4,7 @@ plugins {
     id 'org.openjfx.javafxplugin' version '0.1.0'
 }
 
-group = 'Q1'
+group = 'OO_Q1'
 version = '1'
 
 repositories {
@@ -34,7 +34,7 @@ javafx {
 }
 
 application {
-    mainClass = 'Q1.WelcomeWithHandler' // path to your main class
+    mainClass = 'application.CPTSMachine' // path to your main class
 }
 
 test {
@@ -56,7 +56,7 @@ test {
 jar {
     // Set duplicate handling strategy
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-    
+
     // Include compiled classes (default behavior)
     from sourceSets.main.output
 
@@ -73,4 +73,8 @@ jar {
 
     // Set archive name
     archiveFileName = "${project.name}-${project.version}-with-sources.jar"
+}
+
+run {
+    standardInput = System.in
 }

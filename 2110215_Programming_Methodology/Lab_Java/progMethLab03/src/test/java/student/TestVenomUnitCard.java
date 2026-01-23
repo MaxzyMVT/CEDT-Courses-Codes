@@ -1,4 +1,4 @@
-package test.student;
+package student;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -61,6 +61,18 @@ public class TestVenomUnitCard {
 		assertEquals(7, player.getCurrentDamagePoint());
 	}
 	
-	//Fill Code Here!!!
 	// 1.testAttack (Must test with all 3 venomUnit on oppoUnit1 with higher than 0 health, you can use .setHealth(int))
+	@Test
+	void testAttack() {
+		assertEquals(100, venomUnit1.attackUnit(oppoUnit1));
+		assertEquals(0, oppoUnit1.getHealth());
+
+		oppoUnit1.setHealth(789);
+		assertEquals(789, venomUnit2.attackUnit(oppoUnit1));
+		assertEquals(0, oppoUnit1.getHealth());
+
+		oppoUnit1.setHealth(987123);
+		assertEquals(987123, venomUnit3.attackUnit(oppoUnit1));
+		assertEquals(0, oppoUnit1.getHealth());
+	}
 }

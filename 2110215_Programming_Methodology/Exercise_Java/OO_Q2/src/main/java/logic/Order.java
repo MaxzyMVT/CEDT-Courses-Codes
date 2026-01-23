@@ -9,7 +9,9 @@ public class Order {
 	
 	public Order() {
 		// TODO
-
+		orderItemList = new ArrayList<>();
+		orderNumber = totalOrderCount;
+		totalOrderCount++;
 	}
 
 	public OrderItem addItem(Item item, int amount) {
@@ -19,13 +21,32 @@ public class Order {
 		// and return that orderItem
 
 		// else create new orderItem with given item and amount, then return the new orderItem
-		return null;
+
+		try {
+			for(OrderItem orderItem : orderItemList) {
+				if(orderItem.getItem().equals(item)) {
+					orderItem.increaseItemAmount(amount);
+					return orderItem;
+				}
+			}
+
+			OrderItem orderItem = new OrderItem(item, amount);
+			orderItemList.add(orderItem);
+			return orderItem;
+		}
+		catch(Exception e) {
+			return null;
+		}
 	}
 
 	public int calculateOrderTotalPrice() {
 		// TODO
 		// Calculate total price of the order by summing total price of each orderItem in orderItemList
-		
+		int totalPrice = 0;
+		for(OrderItem orderItem : orderItemList) {
+			totalPrice += orderItem.calculateTotalPrice();
+		}
+		return totalPrice;
 	}
 
 	public static int getTotalOrderCount() {

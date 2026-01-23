@@ -1,8 +1,10 @@
-package Student;
+package Casino;
+
+import Student.CEDTStudent;
 
 public class CEDTDataScience extends CEDTStudent {
 
     public CEDTDataScience() {
-        this.internCompany = "Google";
+        this.internCompany = "Google"; // Protected allows subclass to see
     }
 }

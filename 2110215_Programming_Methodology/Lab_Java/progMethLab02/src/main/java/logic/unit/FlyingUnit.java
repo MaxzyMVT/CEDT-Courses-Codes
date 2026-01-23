@@ -12,7 +12,7 @@ public class FlyingUnit extends BaseUnit {
 
         int currentRow = getRow();
         int currentColumn = getColumn();
-        return switch (direction) {
+        boolean isMovable = switch (direction) {
             case 0 -> {
                 setRow(currentRow + 2);
                 yield getRow() - currentRow == 2;
@@ -31,5 +31,11 @@ public class FlyingUnit extends BaseUnit {
             }
             default -> false;
         };
+
+        if(!isMovable) {
+            setRow(currentRow);
+            setColumn(currentColumn);
+        }
+        return isMovable;
     }
 }

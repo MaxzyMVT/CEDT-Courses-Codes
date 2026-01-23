@@ -59,8 +59,11 @@ public class MisaShop {
 	
 	public static void addItemToOrder(Order order, int index, int amount) {
 		// TODO
-		// Add item at given itemIndex from itemList to the order with given amount. 
-		
+		// Add item at given itemIndex from itemList to the order with given amount.
+		try {
+			order.addItem(itemList.get(index), amount);
+		}
+		catch(Exception _) {}
 	}
 
 //===================================================================================================	

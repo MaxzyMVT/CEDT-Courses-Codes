@@ -1,4 +1,4 @@
-package test.student;
+package student;
 
 
 
@@ -108,9 +108,49 @@ public class TestDeck {
 	}
 	
 	
-	
-	//Fill Code Here!!!
+
 	// 1.testRemoveCard
+	@Test
+	void testRemoveCard() {
+		try {
+			deck2.removeCard(5);
+		}
+		catch (RemoveCardFailedException e) {
+			fail("RemoveCardFailedException deck2 throws error");
+		}
+		assertEquals(7, deck2.getDeckSize());
+		for(int i = 0 ; i < 5 ; i++) {
+			assertEquals(cardList2[i], deck2.getDeckList()[i]);
+		}
+		for(int i = 5 ; i < deck2.getDeckSize() ; i++) {
+			assertEquals(cardList2[i+1], deck2.getDeckList()[i]);
+		}
+
+		try {
+			deck3.removeCard(2);
+			deck3.removeCard(2);
+		}
+		catch (RemoveCardFailedException e) {
+			fail("RemoveCardFailedException deck3 throws error");
+		}
+		assertEquals(6, deck3.getDeckSize());
+		for(int i = 0 ; i < 2 ; i++) {
+			assertEquals(cardList3[i], deck3.getDeckList()[i]);
+		}
+		for(int i = 2 ; i < deck3.getDeckSize() ; i++) {
+			assertEquals(cardList3[i+2], deck3.getDeckList()[i]);
+		}
+	}
+
 	// 2.testNonExsistanceRemoveCard
-	
+	@Test
+	void testRemoveNonExsistanceCard () {
+		assertThrows(RemoveCardFailedException.class, () -> {
+			deck1.removeCard(4);
+		});
+
+		assertThrows(RemoveCardFailedException.class, () -> {
+			deck1.removeCard(0);
+		});
+	}
 }

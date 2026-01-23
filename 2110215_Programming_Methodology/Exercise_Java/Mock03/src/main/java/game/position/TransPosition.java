@@ -1,6 +1,4 @@
-package position;
-
-import game.control.State;
+package game.position;
 
 public class TransPosition {
     private final Position from;

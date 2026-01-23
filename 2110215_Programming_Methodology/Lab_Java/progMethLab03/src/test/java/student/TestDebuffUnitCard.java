@@ -1,4 +1,4 @@
-package test.student;
+package student;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -51,9 +51,38 @@ public class TestDebuffUnitCard {
 	
 	
 	
-	//Fill Code Here!!!
-        // 1.testSetDebuffPower
-	// 2.testAttack 
+
+	// 1.testSetDebuffPower
+	@Test
+	void testSetDebuffPower() {
+		debuffUnit1.setDebuffPower(2);
+		assertEquals(2, debuffUnit1.getDebuffPower());
+
+		debuffUnit1.setDebuffPower(78);
+		assertEquals(78, debuffUnit1.getDebuffPower());
+
+		debuffUnit1.setDebuffPower(0);
+		assertEquals(0, debuffUnit1.getDebuffPower());
+
+		debuffUnit1.setDebuffPower(-3);
+		assertEquals(0, debuffUnit1.getDebuffPower());
+	}
+
+	// 2.testAttack
+	@Test
+	void testAttack() {
+		assertEquals(3, debuffUnit3.attackUnit(oppoUnit1));
+		assertEquals(2, oppoUnit1.getHealth());
+		assertEquals(2, oppoUnit1.getPower());
+
+		assertEquals(1, debuffUnit2.attackUnit(oppoUnit1));
+		assertEquals(1, oppoUnit1.getHealth());
+		assertEquals(0, oppoUnit1.getPower());
+
+		assertEquals(1, debuffUnit1.attackUnit(oppoUnit1));
+		assertEquals(0, oppoUnit1.getHealth());
+		assertEquals(0, oppoUnit1.getPower());
+	}
 
 }
 

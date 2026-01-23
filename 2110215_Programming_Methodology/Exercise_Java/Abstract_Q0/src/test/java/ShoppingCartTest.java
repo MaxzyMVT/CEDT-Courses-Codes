@@ -1,11 +1,13 @@
-package test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
 import logic.ShoppingCart;
 import logic.UnitItem;
 import logic.WeightItem;
 
-import org.junit.Test;
+
+
 
 public class ShoppingCartTest {
 

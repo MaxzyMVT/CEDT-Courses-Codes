@@ -4,7 +4,7 @@ plugins {
     id 'org.openjfx.javafxplugin' version '0.1.0'
 }
 
-group = 'Q1'
+group = 'OO_Q3'
 version = '1'
 
 repositories {
@@ -34,7 +34,7 @@ javafx {
 }
 
 application {
-    mainClass = 'Q1.WelcomeWithHandler' // path to your main class
+    mainClass = 'main.Main' // path to your main class
 }
 
 test {

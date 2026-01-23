@@ -1,4 +1,4 @@
-package test.student;
+package student;
 
 
 
@@ -67,10 +67,50 @@ public class TestLeaderUnitCard {
 		
 	}
 	
-	//Fill Code Here!!!
 	// 1.testSetBuffHealth
+	@Test
+	void testSetBuffHealth(){
+		leaderUnit1.setBuffHealth(-1);
+		assertEquals(0, leaderUnit1.getBuffHealth());
+		leaderUnit1.setBuffHealth(5);
+		assertEquals(5, leaderUnit1.getBuffHealth());
+		leaderUnit1.setBuffHealth(0);
+		assertEquals(0, leaderUnit1.getBuffHealth());
+	}
+
 	// 2.testAttack (Must test a case of oppoUnit1 take damage exceed its health, not including this case will only give you half a score)
+	@Test
+	void testAttack() {
+		assertEquals(3, leaderUnit1.attackUnit(oppoUnit1));
+		assertEquals(2, oppoUnit1.getHealth());
+
+		assertEquals(1, leaderUnit2.attackUnit(oppoUnit1));
+		assertEquals(1, oppoUnit1.getHealth());
+
+		assertEquals(1, leaderUnit1.attackUnit(oppoUnit1));
+		assertEquals(0, oppoUnit1.getHealth());
+	}
+
 	// 3.testBuffUnit
+	@Test
+	void testBuffUnit() {
+		leaderUnit1.buffUnit(unitList);
+		assertEquals(4, nUnit1.getPower());
+		assertEquals(4, nUnit1.getHealth());
+		assertEquals(6, nUnit2.getPower());
+		assertEquals(3, nUnit2.getHealth());
+		assertEquals(5, nUnit3.getPower());
+		assertEquals(6, nUnit3.getHealth());
+
+		((LeaderUnitCard) leaderUnit2).buffUnit(unitList);
+		assertEquals(5, nUnit1.getPower());
+		assertEquals(6, nUnit1.getHealth());
+		assertEquals(7, nUnit2.getPower());
+		assertEquals(5, nUnit2.getHealth());
+		assertEquals(6, nUnit3.getPower());
+		assertEquals(8, nUnit3.getHealth());
+
+	}
 }
 
 

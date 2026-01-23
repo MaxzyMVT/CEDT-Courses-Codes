@@ -6,6 +6,9 @@ public class Student {
 
 	protected final static int NUM_OF_TESTS = 3;
 
+	static int studentNum = 0;
+	final int SEVEN_EIGHT_NINE = 789;
+
 	protected String name;
 	protected int[] test;
 	protected String courseGrade;

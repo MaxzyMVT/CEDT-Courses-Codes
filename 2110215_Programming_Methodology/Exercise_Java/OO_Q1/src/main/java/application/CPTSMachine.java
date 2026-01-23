@@ -1,3 +1,5 @@
+package application;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -13,7 +15,9 @@ public class CPTSMachine {
 	private static boolean isEnd = false;
 	
 	private static Scanner kb =  new Scanner(System.in);
-	
+
+	public CPTSMachine() {}
+
 	public static void main(String[] ang) {
 		initializeData();
 		
@@ -69,26 +73,38 @@ public class CPTSMachine {
 		stationlist.add(new Station("Thong Lor",6));
 		stationlist.add(new Station("Ekkamai",7));
 	}
-	
+
 	public static boolean addStation(String name) {
-		if(isStationExisted(name))
+		if(isStationExisted(name)) {
+			System.out.println("There is already a station with that name");
 			return false;
+		}
 		stationlist.add(new Station(name,getTotalStationNumber()));
 		totalStationNumber++;
         return true;
     }
 	
 	public static boolean isStationExisted(String name) {
-		return stationlist.contains(name);
+		for(Station station : getStationlist()) {
+			if(station.getName().equals(name))
+				return true;
+		}
+		return false;
 	}
 	
 	public static boolean buyTicket(int type, Station start, Station end) {
 		Ticket ticket = new Ticket(type,start,end);
-		if(ticket.isStationValid(start, end)) {
-			ticketlist.add(ticket);
-			System.out.println("Bought "+ticket.getDescription()+", for "+ticket.calculatePrice()+" Baht!");
-			return true;
-		}else {
+		try {
+			if(ticket.isStationValid(start, end) && type >= 0 && type <= 2) {
+				getTicketlist().add(ticket);
+				System.out.println("Bought "+ticket.getDescription()+", for "+ticket.calculatePrice()+" Baht!");
+				return true;
+			} else {
+				System.out.println("This ticket cannot be bought.");
+				return false;
+			}
+		}
+		catch(Exception e) {
 			System.out.println("This ticket cannot be bought.");
 			return false;
 		}
@@ -105,8 +121,8 @@ public class CPTSMachine {
 	public static void handleAddStation() {
 		System.out.print("Please enter new station name:\t");
 		String name = kb.nextLine();
-		boolean issuccess = addStation(name);
-		if(issuccess) {
+		boolean isSuccess = addStation(name);
+		if(isSuccess) {
 			System.out.println("Station No. "+totalStationNumber+": "+name+" has been added successfully!");
 		}else {
 			System.out.println("Error adding station named "+name+".\nStation with the same name already exists!");
@@ -115,10 +131,10 @@ public class CPTSMachine {
 	
 	public static void showAllBoughtTicket() {
 		int n = 0;
-		if(ticketlist.isEmpty()) {
+		if(getTicketlist().isEmpty()) {
 			System.out.println("You have not bought any ticket yet.");
 		}else {
-			for(Ticket t:ticketlist) {
+			for(Ticket t:getTicketlist()) {
 				System.out.println("["+(n+1)+"] "+t.getDescription());
 				n++;
 			}
@@ -141,11 +157,11 @@ public class CPTSMachine {
 				System.out.print("Please select the starting station:\t");
 				int command = kb.nextInt();
 				kb.nextLine();
-				Station start = stationlist.get(command);
+				Station start = getStationlist().get(command);
 				System.out.print("Please select the ending station:\t");
 				command = kb.nextInt();
 				kb.nextLine();	
-				Station end = stationlist.get(command);
+				Station end = getStationlist().get(command);
 				
 				buyTicket(type-1,start,end);
 				

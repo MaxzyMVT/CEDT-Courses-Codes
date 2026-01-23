@@ -17,7 +17,6 @@ public class DeckManager {
 		UnitCard urayuli = new UnitCard("Urayuli", 4 , 7, 7, "This level of brutish strength needs no explanation...");
 		
 		ArrayList<UnitCard> cards = new ArrayList<>();
-		
 		cards.add(squirrel);
 		cards.add(stoat);
 		cards.add(wolf);

@@ -1,14 +1,15 @@
-package test.PieceTest;
+package PieceTest;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import game.board.Board;
-import org.junit.Before;
-import org.junit.Test;
 
 import game.piece.Bishop;
 import game.piece.Knight;
 import game.position.Position;
-
-import static org.junit.Assert.*;
 
 import java.util.Set;
 
@@ -21,7 +22,7 @@ public class KnightTest {
 	Position posB8;
 	Position posG8;
 
-	@Before
+	@BeforeEach
 	public void setup() {
 		b = new Board();
 

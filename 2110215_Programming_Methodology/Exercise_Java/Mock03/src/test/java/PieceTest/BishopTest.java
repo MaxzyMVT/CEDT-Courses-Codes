@@ -1,12 +1,13 @@
-package test.PieceTest;
+package PieceTest;
 
 import game.board.Board;
 import game.piece.Bishop;
 import game.position.Position;
 
-import org.junit.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
@@ -18,7 +19,7 @@ public class BishopTest {
 	Position posF8; // Black Dark Square Bishop
 	Position posC1; // Black Light Square Bishop
 
-	@Before
+	@BeforeEach
 	public void setup() {
 		b = new Board();
 		posC8 = new Position("c8");
