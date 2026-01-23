@@ -1,0 +1,64 @@
+@startuml
+class logic.unit.FlyingUnit {
++ <<Create>> FlyingUnit(int,int,boolean,String)
++ boolean move(int)
+}
+
+class logic.game.GameSystem {
+- ArrayList<BaseUnit> allWhitePieces
+- ArrayList<BaseUnit> allRedPieces
+- boolean gameEnd
+- {static} GameSystem instance
+- <<Create>> GameSystem()
++ {static} GameSystem getInstance()
++ boolean isGameEnd()
++ void setGameEnd(boolean)
++ ArrayList<BaseUnit> getAllWhitePieces()
++ ArrayList<BaseUnit> getAllRedPieces()
++ void printBoardStatus(ArrayList<BaseUnit>)
++ void removeDeadPieces(ArrayList<BaseUnit>)
++ BaseUnit promote(BaseUnit,int)
+}
+
+
+class logic.unit.BaseUnit {
+- int row
+- int column
+- boolean isWhite
+- String name
+# int hp
+# int power
+# boolean isFlying
++ <<Create>> BaseUnit(int,int,boolean,String)
++ boolean move(int)
++ void attack(ArrayList<BaseUnit>)
++ int getRow()
++ void setRow(int)
++ int getColumn()
++ void setColumn(int)
++ boolean isWhite()
++ void setWhite(boolean)
++ String getName()
++ void setName(String)
++ int getHp()
++ void setHp(int)
++ int getPower()
++ boolean isFlying()
+}
+
+
+class logic.unit.RangeUnit {
++ <<Create>> RangeUnit(int,int,boolean,String)
++ void attack(ArrayList<BaseUnit>)
+}
+
+class logic.unit.MeleeUnit {
++ <<Create>> MeleeUnit(int,int,boolean,String)
+}
+
+
+
+logic.unit.BaseUnit <|-- logic.unit.FlyingUnit
+logic.unit.BaseUnit <|-- logic.unit.RangeUnit
+logic.unit.BaseUnit <|-- logic.unit.MeleeUnit
+@enduml
