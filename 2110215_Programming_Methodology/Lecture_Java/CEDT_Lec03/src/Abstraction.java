@@ -10,6 +10,7 @@ public class Abstraction {
         myAnimals.add(new Bird());
         myAnimals.add(new Orca());
 
+        ((Orca) myAnimals.get(3)).swim();
 
         // Polymorphism and Abstract Class makes code fairly shorter!
         for(Animal a : myAnimals){
@@ -79,5 +80,9 @@ class Orca extends Animal {
     @Override
     void say() {
         System.out.println("Baku!, baku!, bakunn~~!");
+    }
+
+    void swim() {
+        System.out.println("Orca is Swimming!");
     }
 }

@@ -37,9 +37,12 @@ public class TimerWithAnimationTimer extends Application {
 		this.lastTimeTriggered = -1;
 		GraphicsContext gc = canvas.getGraphicsContext2D();
 		this.animationTimer = new AnimationTimer() {
-			
-			@Override
-			public void handle(long now) {
+			// Use FX thread time (so we don't have to make new thread (expensive) for the timer)
+
+
+			// This function will be called every time FX thread is set to runnning
+			@Override	// Mandatory
+			public void handle(long now) {	// nanosecond
 				// TODO Auto-generated method stub
 				
 				lastTimeTriggered = (lastTimeTriggered < 0 ? now : lastTimeTriggered);

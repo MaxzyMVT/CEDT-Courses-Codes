@@ -1,5 +1,3 @@
-package test;
-
 import logic.game.GameManager;
 
 import logic.stone.Dynamite;

@@ -34,7 +34,7 @@ javafx {
 }
 
 application {
-    mainClass = 'ExerciseSolution.InfiniteOraFix' // path to your main class
+    mainClass = 'Thread_Part2.TaskOnBackgroundThreadWithRunLater' // path to your main class
 }
 
 run {

@@ -50,6 +50,7 @@ public class TaskOnBackgroundThreadWithRunLater extends Application{
 				Thread thread = new Thread(() -> {
 					try {
 						Thread.sleep(5000);
+						// runLater() will run with FX thread next Running, so no exception is thrown
 						Platform.runLater(new Runnable(){
 							@Override
 							public void run() {

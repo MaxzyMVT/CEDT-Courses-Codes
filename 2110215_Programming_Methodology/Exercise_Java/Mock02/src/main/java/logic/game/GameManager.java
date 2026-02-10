@@ -63,12 +63,13 @@ public class GameManager {
         }
     }
 
-   // TODO implement this method
+
     public void digStone(Stone stone) {
-        // TODO implement this method
-
-
-        
+        useBattery(1);
+        stone.dig(digPower);
+        if(stone instanceof Dynamite) {
+            setGameScore(gameScore - 5);
+        }
     }
 
     public void endGame() {

@@ -13,7 +13,8 @@ public class TimerWithThread extends Application {
 	
 	private Canvas canvas;
 	private int currentTime;
-	private Thread timerThread;
+	private Thread timerThread;	// Make timer with new thread -> will cause a problem
+	// When we terminate the FX threada, the timer thread will be failed because it's depends on FX
 	
 	public static void main(String[] args) {
 		launch(args);

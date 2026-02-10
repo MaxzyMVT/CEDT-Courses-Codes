@@ -48,8 +48,11 @@ public class TaskOnBackgroundThreadWithException extends Application{
 				// TODO Auto-generated method stub
 				Thread thread = new Thread(() -> {
 					try {
-						Thread.sleep(5000);
+						Thread.sleep(5000);	// This sleep on new thread, so UI won't freeze
 						displayLabel.setText(textField.getText());
+						// But Java prevents other Thread from updating UI except for FX thread
+						// So this will throw an error
+						// We can prevent this by using "runLater()" to tell that UI will update when FX thread update
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

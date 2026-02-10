@@ -4,6 +4,8 @@ class SleepThread extends Thread {
 	public void run() {
 		try {
 			sleep(1);
+			// Make ("Running" -- (sleep() or wait() or suspend()) --> "Blocked / Waiting" -- (notify() or notifyAll() or resume() or end of sleep) --> "Runnable")
+			// sleep() -> interrupted sleep will throw runtime error
 		} catch (InterruptedException e) {
 
 		}

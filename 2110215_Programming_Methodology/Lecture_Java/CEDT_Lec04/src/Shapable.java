@@ -1,4 +1,4 @@
-public interface Shape {
+public interface Shapable {
     // Implicit "public static final"
     String LABEL = "Shape";
 
@@ -19,4 +19,33 @@ public interface Shape {
      */
 }
 
-public class 
+class Circle implements Shapable {
+
+    private double radius;
+
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    public Circle() {
+        radius = 0;
+    }
+
+    public double getRadius() {
+        return radius;
+    }
+
+    public void setRadius(double radius) {
+        this.radius = radius;
+    }
+
+    @Override
+    public void draw() {
+        System.out.println("Drawing Circle");
+    }
+
+    @Override
+    public double getArea() {
+        return Math.PI * radius * radius;
+    }
+}

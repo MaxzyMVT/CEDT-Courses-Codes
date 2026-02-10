@@ -47,7 +47,8 @@ public class TaskOnJavaFXThread extends Application{
 			public void handle(ActionEvent event) {
 				// TODO Auto-generated method stub
 				try {
-					Thread.sleep(5000);
+					Thread.sleep(10000);
+					// Can't update UI!
 					displayLabel.setText(textField.getText());
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block

@@ -1,5 +1,3 @@
-package test;
-
 import container.Neuron;
 import container.NeuronDemo;
 

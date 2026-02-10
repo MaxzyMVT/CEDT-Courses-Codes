@@ -1,5 +1,3 @@
-package test;
-
 import container.Neuron;
 import org.junit.jupiter.api.Test;
 import util.GenRandom;

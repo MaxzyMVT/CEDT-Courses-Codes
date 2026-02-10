@@ -34,7 +34,7 @@ javafx {
 }
 
 application {
-    mainClass = 'Q1.WelcomeWithHandler' // path to your main class
+    mainClass = 'Q1.main' // path to your main class
 }
 
 test {

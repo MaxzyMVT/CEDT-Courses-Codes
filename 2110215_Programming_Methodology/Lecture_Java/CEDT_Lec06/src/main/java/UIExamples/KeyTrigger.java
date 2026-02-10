@@ -1,4 +1,4 @@
-/*package UIExamples;
+package UIExamples;/*package UIExamples;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;

@@ -1,4 +1,4 @@
-package test.grader.counter.base;
+package grader.counter.base;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

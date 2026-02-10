@@ -1,0 +1,139 @@
+@startuml
+class entity.ingredient.Egg {
+- int cookedPercentage
++ <<Create>> Egg()
++ void cook()
++ boolean isBurnt()
++ String toString()
++ int getCookedPercentage()
++ void setCookedPercentage(int)
+}
+
+
+class entity.counter.Counter {
+- String name
+- Item placedContent
++ <<Create>> Counter()
++ <<Create>> Counter(Item)
+# <<Create>> Counter(String)
++ Item getPlacedContent()
++ void setPlacedContent(Item)
++ boolean isPlacedContentEmpty()
++ void interact(Player)
++ String getName()
++ void setName(String)
++ String toString()
+}
+
+
+interface entity.base.Choppable {
+~ void chop()
+~ boolean isChopped()
+}
+
+interface entity.base.Updatable {
+~ void update()
+}
+
+class entity.counter.Bin {
++ <<Create>> Bin()
++ void interact(Player)
+}
+
+class entity.counter.Stove {
++ <<Create>> Stove()
++ <<Create>> Stove(Item)
++ void interact(Player)
++ void update()
+}
+
+class entity.container.Dish {
+- int dirty
++ <<Create>> Dish()
++ <<Create>> Dish(int)
++ boolean isDirty()
++ boolean verifyContent(Ingredient)
++ void setDirty(int)
++ void clean(int)
++ String toString()
++ int getDirty()
+}
+
+
+interface entity.base.Cookable {
+~ void cook()
+~ boolean isBurnt()
+}
+
+class entity.counter.DishWasher {
++ <<Create>> DishWasher()
++ void interact(Player)
++ void update()
+}
+
+class entity.container.Pan {
++ <<Create>> Pan()
++ boolean verifyContent(Ingredient)
++ void cook()
+}
+
+class entity.counter.Crate {
+- String myIngredient
++ <<Create>> Crate(String)
++ void interact(Player)
++ String getMyIngredient()
++ void setMyIngredient(String)
+}
+
+
+class entity.counter.ChoppingBoard {
++ <<Create>> ChoppingBoard()
++ void interact(Player)
+}
+
+class entity.ingredient.Bread {
++ <<Create>> Bread()
+}
+
+class entity.ingredient.Lettuce {
+- boolean chopState
++ <<Create>> Lettuce()
++ void chop()
++ boolean isChopped()
+}
+
+
+class entity.ingredient.Meat {
+- boolean chopState
+- int cookedPercentage
++ <<Create>> Meat()
++ void chop()
++ boolean isChopped()
++ void cook()
++ boolean isBurnt()
++ int getCookedPercentage()
++ void setCookedPercentage(int)
++ String toString()
+}
+
+
+
+
+entity.base.Cookable <|.. entity.ingredient.Egg
+entity.base.Ingredient <|-- entity.ingredient.Egg
+entity.counter.Counter <|-- entity.counter.Bin
+entity.base.Updatable <|.. entity.counter.Stove
+entity.counter.Counter <|-- entity.counter.Stove
+entity.base.Container <|-- entity.container.Dish
+entity.base.Updatable <|.. entity.counter.DishWasher
+entity.counter.Counter <|-- entity.counter.DishWasher
+entity.base.Container <|-- entity.container.Pan
+entity.counter.Counter <|-- entity.counter.Crate
+entity.counter.Counter <|-- entity.counter.ChoppingBoard
+entity.base.Ingredient <|-- entity.ingredient.Bread
+entity.base.Choppable <|.. entity.ingredient.Lettuce
+entity.base.Ingredient <|-- entity.ingredient.Lettuce
+entity.base.Choppable <|.. entity.ingredient.Meat
+entity.base.Cookable <|.. entity.ingredient.Meat
+entity.base.Ingredient <|-- entity.ingredient.Meat
+@enduml

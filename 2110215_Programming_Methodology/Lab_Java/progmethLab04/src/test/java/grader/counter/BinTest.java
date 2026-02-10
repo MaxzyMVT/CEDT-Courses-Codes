@@ -1,4 +1,4 @@
-package test.grader.counter;
+package grader.counter;
 
 import static org.junit.jupiter.api.Assertions.*;
 

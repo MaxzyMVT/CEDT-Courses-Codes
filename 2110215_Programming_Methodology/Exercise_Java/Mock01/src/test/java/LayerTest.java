@@ -1,5 +1,3 @@
-package test;
-
 import container.Layer;
 import container.Neuron;
 import function.Function;

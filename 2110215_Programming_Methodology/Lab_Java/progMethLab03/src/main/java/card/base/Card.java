@@ -31,7 +31,7 @@ public abstract class Card implements Cloneable {
 	
 	/// You can modify code above ///
 	
-	public boolean equals(Card other) {
+	public boolean equals(UnitCard other) {
 		return this.getName().equals(other.getName());
 	}
 	public Object clone()throws CloneNotSupportedException{  
