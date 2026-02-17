@@ -1,0 +1,233 @@
+--
+-- PostgreSQL database dump
+--
+
+\restrict 2Y4J8M5QCqyjMqcEmB8dpfhPy3I4fcnhJm08aj3UPQ1X8cWkKxwb2LcQ713bVzb
+
+-- Dumped from database version 18.1 (Debian 18.1-1.pgdg13+2)
+-- Dumped by pg_dump version 18.1 (Debian 18.1-1.pgdg13+2)
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET transaction_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- Name: expense; Type: TABLE; Schema: public; Owner: grader_pg
+--
+
+CREATE TABLE public.expense (
+    tid integer NOT NULL,
+    pname text NOT NULL,
+    ddate date NOT NULL,
+    amt real DEFAULT 0.0 NOT NULL
+);
+
+
+
+--
+-- Name: expense_tid_seq; Type: SEQUENCE; Schema: public; Owner: grader_pg
+--
+
+CREATE SEQUENCE public.expense_tid_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+
+--
+-- Name: expense_tid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: grader_pg
+--
+
+ALTER SEQUENCE public.expense_tid_seq OWNED BY public.expense.tid;
+
+
+--
+-- Name: expense tid; Type: DEFAULT; Schema: public; Owner: grader_pg
+--
+
+ALTER TABLE ONLY public.expense ALTER COLUMN tid SET DEFAULT nextval('public.expense_tid_seq'::regclass);
+
+
+--
+-- Data for Name: expense; Type: TABLE DATA; Schema: public; Owner: grader_pg
+--
+
+COPY public.expense (tid, pname, ddate, amt) FROM stdin;
+1	E	2025-01-10	215
+2	E	2025-01-10	458
+3	E	2025-01-10	2416
+4	A	2025-02-10	1200
+5	A	2025-02-10	1715
+6	A	2025-02-10	1136
+7	A	2025-02-10	1744
+8	B	2025-02-10	2133
+9	B	2025-02-10	1748
+10	B	2025-02-10	152
+11	B	2025-02-10	2183
+12	B	2025-02-10	3186
+13	B	2025-02-10	2615
+14	B	2025-02-10	3346
+15	C	2025-02-10	312
+16	E	2025-02-10	1289
+17	E	2025-02-10	2077
+18	E	2025-02-10	1947
+19	E	2025-02-10	2174
+20	E	2025-02-10	1366
+21	E	2025-02-10	2057
+22	E	2025-02-10	2815
+23	E	2025-02-10	2547
+24	E	2025-02-10	157
+25	C	2025-03-10	3453
+26	C	2025-03-10	842
+27	C	2025-03-10	3420
+28	C	2025-03-10	3242
+29	D	2025-03-10	810
+30	D	2025-03-10	3267
+31	D	2025-03-10	460
+32	D	2025-03-10	2761
+33	D	2025-03-10	2027
+34	D	2025-03-10	2171
+35	D	2025-03-10	2629
+36	D	2025-03-10	2820
+37	D	2025-03-10	1748
+38	E	2025-03-10	2337
+39	E	2025-03-10	1238
+40	E	2025-03-10	2354
+41	E	2025-03-10	2895
+42	E	2025-03-10	3431
+43	E	2025-03-10	566
+44	E	2025-03-10	80
+45	E	2025-03-10	2552
+46	B	2025-04-10	2846
+47	B	2025-04-10	2565
+48	B	2025-04-10	3042
+49	B	2025-04-10	770
+50	B	2025-04-10	1596
+51	B	2025-04-10	2379
+52	B	2025-04-10	1651
+53	B	2025-04-10	1713
+54	B	2025-04-10	622
+55	C	2025-04-10	1221
+56	C	2025-04-10	2188
+57	C	2025-04-10	1439
+58	C	2025-04-10	104
+59	C	2025-04-10	3106
+60	C	2025-04-10	2666
+61	D	2025-04-10	522
+62	D	2025-04-10	1370
+63	A	2025-05-10	2191
+64	A	2025-05-10	1122
+65	B	2025-06-10	150
+66	B	2025-06-10	191
+67	B	2025-06-10	1237
+68	B	2025-06-10	3024
+69	B	2025-06-10	2541
+70	B	2025-06-10	2641
+71	B	2025-06-10	533
+72	A	2025-07-10	2252
+73	A	2025-07-10	851
+74	A	2025-07-10	3286
+75	A	2025-07-10	1939
+76	C	2025-07-10	2448
+77	C	2025-07-10	72
+78	D	2025-07-10	348
+79	D	2025-07-10	3411
+80	D	2025-07-10	3084
+81	D	2025-07-10	2810
+82	D	2025-07-10	3290
+83	F	2025-07-10	2526
+84	C	2025-08-10	1548
+85	C	2025-08-10	389
+86	C	2025-08-10	2009
+87	C	2025-08-10	2552
+88	D	2025-08-10	312
+89	D	2025-08-10	2868
+90	D	2025-08-10	1231
+91	D	2025-08-10	171
+92	D	2025-08-10	3494
+93	F	2025-08-10	2553
+94	F	2025-08-10	832
+95	F	2025-08-10	672
+96	F	2025-08-10	1647
+97	F	2025-08-10	2578
+98	A	2025-09-10	2231
+99	B	2025-09-10	2095
+100	B	2025-09-10	1553
+101	B	2025-09-10	638
+102	B	2025-09-10	191
+103	C	2025-09-10	734
+104	C	2025-09-10	433
+105	C	2025-09-10	1131
+106	C	2025-09-10	2799
+107	C	2025-09-10	1360
+108	C	2025-09-10	2736
+109	C	2025-09-10	894
+110	C	2025-09-10	1073
+111	D	2025-09-10	1228
+112	D	2025-09-10	2833
+113	D	2025-09-10	1283
+114	D	2025-09-10	1069
+115	D	2025-09-10	292
+116	D	2025-09-10	1159
+117	D	2025-09-10	2946
+118	A	2025-10-10	2860
+119	A	2025-10-10	860
+120	A	2025-10-10	2953
+121	A	2025-10-10	3365
+122	A	2025-10-10	2079
+123	B	2025-10-10	3299
+124	B	2025-10-10	197
+125	B	2025-10-10	2597
+126	B	2025-10-10	1976
+127	B	2025-10-10	387
+128	B	2025-10-10	1708
+129	B	2025-10-10	1162
+130	B	2025-10-10	1751
+131	A	2025-06-10	150
+132	A	2025-06-10	191
+133	A	2025-06-10	1237
+134	A	2025-06-10	3024
+135	A	2025-06-10	2541
+136	A	2025-06-10	2641
+137	A	2025-06-10	533
+\.
+
+
+--
+-- Name: expense_tid_seq; Type: SEQUENCE SET; Schema: public; Owner: grader_pg
+--
+
+SELECT pg_catalog.setval('public.expense_tid_seq', 1, false);
+
+
+--
+-- Name: expense expense_pkey; Type: CONSTRAINT; Schema: public; Owner: grader_pg
+--
+
+ALTER TABLE ONLY public.expense
+    ADD CONSTRAINT expense_pkey PRIMARY KEY (tid);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+\unrestrict 2Y4J8M5QCqyjMqcEmB8dpfhPy3I4fcnhJm08aj3UPQ1X8cWkKxwb2LcQ713bVzb
+
+
