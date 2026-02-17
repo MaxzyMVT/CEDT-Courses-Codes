@@ -1,0 +1,13 @@
+awt
+swing
+FX
+
+1. build
+-> load dependencies
+-> setup project
+
+2. implement
+
+3. Test running the program by yourself
+
+4. build -> jar then turn in the JAR file in build/libs

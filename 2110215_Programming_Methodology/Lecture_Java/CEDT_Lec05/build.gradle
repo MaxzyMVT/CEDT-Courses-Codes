@@ -24,8 +24,14 @@ dependencies {
     testImplementation 'org.testfx:testfx-junit5:4.0.17'
     testImplementation 'org.hamcrest:hamcrest:2.2'
 
+    // JUnit 5
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    // MY CODE!!!
+    //  Required by Gradle test executor in many setups
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 javafx {
@@ -34,13 +40,15 @@ javafx {
 }
 
 application {
-    mainClass = 'WelcomeWithHandler' // path to your main class
+    // mainClass = 'WelcomeWithHandler' // path to your main class
+    mainClass = 'FXHelloWorldWithHandler' // path to your main class
 }
 
 run {
     standardInput = System.in
 }
 
+// Test options
 test {
     useJUnitPlatform()
 
@@ -77,4 +85,19 @@ jar {
 
     // Set archive name
     archiveFileName = "${project.name}-${project.version}-with-sources.jar"
+}
+
+// MY CODE!!!
+tasks.withType(JavaExec).configureEach {
+    jvmArgs += [
+            "--enable-native-access=javafx.graphics",
+            "--sun-misc-unsafe-memory-access=allow"
+    ]
+}
+
+tasks.withType(Test).configureEach {
+    jvmArgs += [
+            "--enable-native-access=javafx.graphics",
+            "--sun-misc-unsafe-memory-access=allow"
+    ]
 }
