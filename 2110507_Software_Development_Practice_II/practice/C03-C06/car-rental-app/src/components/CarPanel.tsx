@@ -37,6 +37,7 @@ export default function CarPanel() {
             <div className="w-full text-xl font-medium">
                 Compare List: { compareList.size }
             </div>
+            { Array.from(compareList).map( (car)=><div key={car} onClick={ ()=>dispatchCompare({type:"remove", carName:car}) }>{car}</div> ) }
         </div>
 
     );
