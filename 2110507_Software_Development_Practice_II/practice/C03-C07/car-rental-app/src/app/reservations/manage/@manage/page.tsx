@@ -1,8 +1,8 @@
-export default function MangeReservations() {
+export default function ManagePage() {
     return (
         <main>
             <div>
-              Manage Your Reservations
+                Your Reservations
             </div>
         </main>
     )
