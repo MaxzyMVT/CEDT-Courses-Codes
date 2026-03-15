@@ -1,8 +1,10 @@
 import Image from "next/image";
 
-export default function CarDetailPage({params}: {params: {cid: string}}) {
+export default async function CarDetailPage({ params }: { params: Promise<{ cid: string }> }) {
     
-        /**
+    const { cid } = await params;
+
+    /**
      *  Mock Data for Demonstration Only
      */
     const mockCarRepo = new Map();
@@ -13,13 +15,13 @@ export default function CarDetailPage({params}: {params: {cid: string}}) {
     
     return (
         <main className="text-center p-5">
-            <h1 className="text-lg font-medium">Car ID {params.cid}</h1>
+            <h1 className="text-lg font-medium">Car ID {cid}</h1>
             <div className="flex flex-row my-5">
-                <Image src={ mockCarRepo.get(params.cid).image } 
+                <Image src={ mockCarRepo.get(cid).image } 
                     alt="Car Image"
                     width={0} height={0} sizes="100vw"
                     className="rounded-lg w-[30%]"/>
-                <div className="text-md mx-5">{ mockCarRepo.get(params.cid).name }</div>
+                <div className="text-md mx-5">{ mockCarRepo.get(cid).name }</div>
             </div>
         </main>
     );
