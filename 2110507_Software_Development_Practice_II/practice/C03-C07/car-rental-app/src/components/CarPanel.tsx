@@ -1,9 +1,14 @@
 "use client"
-import { useReducer } from "react";
+import { useReducer, useRef } from "react";
 import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
 
 export default function CarPanel() {
+
+    const countRef = useRef(0);
+    const inputRef = useRef<HTMLInputElement>(null);
+
+    let count = countRef.current;
 
     /**
      *  Mock Data for Demonstration Only
@@ -30,7 +35,7 @@ export default function CarPanel() {
     const [compareList, dispatchCompare] = useReducer(compareReducer, new Set<string>());
 
     return (
-        <div>
+        <div className="p-[20px]">
             <div style={{margin: "20px", display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "space-around", gap: "18px"}}>
                 {
                     mockCarRepo.map( (carItem)=>
@@ -44,10 +49,30 @@ export default function CarPanel() {
                     )
                 }
             </div>
+
             <div className="w-full text-xl font-medium">
                 Compare List: { compareList.size }
             </div>
-            { Array.from(compareList).map( (car)=><div key={car} onClick={ ()=>dispatchCompare({type:"remove", carName:car}) }>{car}</div> ) }
+
+            { 
+                Array.from(compareList).map( (car)=><div key={car} onClick={ ()=>dispatchCompare({type:"remove", carName:car}) }>{car}</div> ) 
+            }
+
+            <button className="block rounded-md bg-sky-600 hover:bg-indigo-600 px-3 py-2 text-white shadow-sm" 
+            onClick={() => {countRef.current = ++count; alert(count)}}>
+                Count++
+            </button>
+
+            <input type="text" placeholder="Please fill" className="block text-gray-900 text-sm rounded-lg p-2 m-2 bg-purple-50 ring-1 ring-inset ring-purple-400 focus:outline-none focus:bg-purple-200 focus:ring-2"
+            ref={inputRef}
+            />
+
+           <button className="block rounded-md bg-sky-600 hover:bg-indigo-600 px-3 py-2 text-white shadow-sm" 
+            onClick={() => { if(inputRef.current != null) inputRef.current.focus()}}>
+                Focus Input
+            </button>
+
+            
         </div>
 
     );

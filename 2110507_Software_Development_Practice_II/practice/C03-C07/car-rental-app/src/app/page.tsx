@@ -1,13 +1,11 @@
 import Banner from "@/components/Banner";
-import ProductCard from "@/components/ProductCard";
-import CarPanel from "@/components/CarPanel";
-import styles from "./page.module.css";
+import { TravelCard } from "@/components/TravelCard";
 
 export default function Home() {
   return (
       <main>
         <Banner/>
-        <CarPanel/>
+        <TravelCard/>
       </main>
   );
 }
