@@ -2,7 +2,7 @@ import ProductCard from "./ProductCard";
 import Link from "next/link";
 
 export default async function CarCatalog({carJson}: {carJson:Object}) {
-
+ 
     const carJsonReady = await carJson;
 
     return (
