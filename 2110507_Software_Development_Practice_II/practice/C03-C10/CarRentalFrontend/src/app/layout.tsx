@@ -5,6 +5,7 @@ import TopMenu from "@/components/TopMenu";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import NextAuthProvider from "@/providers/NextAuthProvider";
+import ReduxProvider from "@/redux/ReduxProvider";
 
 
 const geistSans = Geist({
@@ -33,10 +34,12 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <NextAuthProvider session={session}>
-          <TopMenu/>
-          { children } 
-        </NextAuthProvider>
+        <ReduxProvider>
+          <NextAuthProvider session={session}>
+            <TopMenu/>
+            { children } 
+          </NextAuthProvider>
+        </ReduxProvider>
       </body>
     </html>
   );
