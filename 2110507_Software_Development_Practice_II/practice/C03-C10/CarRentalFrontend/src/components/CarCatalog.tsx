@@ -1,7 +1,8 @@
 import ProductCard from "./ProductCard";
 import Link from "next/link";
+import { CarItem, CarJson } from "../../interfaces";
 
-export default async function CarCatalog({carJson}: {carJson:Object}) {
+export default async function CarCatalog({carJson}: {carJson:CarJson}) {
  
     const carJsonReady = await carJson;
 
@@ -10,7 +11,7 @@ export default async function CarCatalog({carJson}: {carJson:Object}) {
             Explore {carJsonReady.count} models in our catalog
             <div style={{margin: "20px", display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "space-around", gap: "18px"}}>
                 {
-                    carJsonReady.data.map( (carItem: Object)=>
+                    carJsonReady.data.map( (carItem: CarItem)=>
                         <Link 
                         href={`/car/${carItem.id}`} 
                         key={carItem.id} 

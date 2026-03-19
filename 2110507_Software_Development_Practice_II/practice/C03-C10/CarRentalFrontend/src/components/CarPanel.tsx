@@ -4,10 +4,11 @@ import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
 import getCars from "@/libs/getCars"
 import { LinearProgress } from "@mui/material";
+import { CarItem, CarJson } from "../../interfaces";
 
 export default function CarPanel() {
 
-    const [carResponse, setCarResponse] = useState(null)
+    const [carResponse, setCarResponse] = useState<CarJson | null>(null)
 
     useEffect(()=>{
         const fetchData = async () => {
@@ -42,7 +43,7 @@ export default function CarPanel() {
         <div className="p-[20px]">
             <div style={{margin: "20px", display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "space-around", gap: "18px"}}>
                 {
-                    carResponse.data.map( (carItem: Object)=>
+                    carResponse.data.map( (carItem: CarItem)=>
                         <Link href={`/car/${carItem.id}`} className="w-1/5">
                             <ProductCard 
                             carName={carItem.model} 
